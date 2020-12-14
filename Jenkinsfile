@@ -15,11 +15,20 @@ pipeline {
                 sh 'mvn clean install package'
             }
         }
-        stage ('publish artifacts') {
+        // stage ('publish artifacts') {
+        //     steps {
+        //         sh 'cd ../..'
+        //         sh 'ls'
+        //         s3Upload consoleLogLevel: 'INFO', dontSetBuildResultOnFailure: false, dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'nouman-work', excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: true, noUploadOnFailure: true, selectedRegion: 'us-east-1', showDirectlyInBrowser: false, sourceFile: '~/. m2/repository/', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 'artifacts', userMetadata: []
+        //     }
+        // }
+        stage ('upload artifacts') {
             steps {
-                sh 'cd ../..'
-                sh 'ls'
-                s3Upload consoleLogLevel: 'INFO', dontSetBuildResultOnFailure: false, dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'nouman-work', excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: true, noUploadOnFailure: true, selectedRegion: 'us-east-1', showDirectlyInBrowser: false, sourceFile: '~/. m2/repository/', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 'artifacts', userMetadata: []
+                script {
+                    withAWS(region: 'us-east-1',credentials:'aws-credentials') {
+                        s3Upload(file:'~/. m2/repository/', bucket:'nouman-work', path:'artifacts/')    
+                            }
+                }
             }
         }
     }
