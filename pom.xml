@@ -52,7 +52,7 @@
   <distributionManagement>
   <snapshotRepository>
     <id>nouman-work</id>
-    <url>s3://nouman-work/snapshot</url>
+    <url>s3://nouman-work/snapshot/</url>
   </snapshotRepository>
   <repository>
     <id>nouman-work</id>
