@@ -51,12 +51,12 @@
   </build>
   <distributionManagement>
   <repositories>
-  <repository>
-    <id>nouman-work</id>
+  <snapshotRepository>
+    <id>snapshot</id>
     <url>s3://nouman-work/snapshot/</url>
-  </repository>
+  </snapshotRepository>
   <repository>
-    <id>nouman-work</id>
+    <id>release</id>
     <url>s3://nouman-work/release</url>
   </repository>
   </repositories>
