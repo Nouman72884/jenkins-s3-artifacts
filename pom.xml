@@ -24,6 +24,13 @@
 
   </dependencies>
   <build>
+    <extensions>
+    <extension>
+      <groupId>com.github.platform-team</groupId>
+      <artifactId>aws-maven</artifactId>
+      <version>6.0.0</version>
+    </extension>
+    </extensions>
     <plugins>
       <plugin>
         <!-- Build an executable JAR -->
@@ -42,4 +49,14 @@
       </plugin>
     </plugins>
   </build>
+  <distributionManagement>
+  <snapshotRepository>
+    <id>nouman-work</id>
+    <url>s3://nouman-work/snapshot</url>
+  </snapshotRepository>
+  <repository>
+    <id>nouman-work</id>
+    <url>s3://nouman-work/release</url>
+  </repository>
+</distributionManagement>
 </project>
