@@ -50,13 +50,15 @@
     </plugins>
   </build>
   <distributionManagement>
-  <snapshotRepository>
+  <repositories>
+  <repository>
     <id>nouman-work</id>
     <url>s3://nouman-work/snapshot/</url>
-  </snapshotRepository>
+  </repository>
   <repository>
     <id>nouman-work</id>
     <url>s3://nouman-work/release</url>
   </repository>
+  </repositories>
 </distributionManagement>
 </project>
