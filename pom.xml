@@ -47,16 +47,21 @@
           </archive>
         </configuration>
       </plugin>
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>3.0.0-M1</version>
+        </plugin>
     </plugins>
   </build>
   <distributionManagement>
   <repositories>
   <snapshotRepository>
-    <id>snapshot</id>
+    <id>nouman-work</id>
     <url>s3://nouman-work/snapshot/</url>
   </snapshotRepository>
   <repository>
-    <id>release</id>
+    <id>nouman</id>
     <url>s3://nouman-work/release</url>
   </repository>
   </repositories>
