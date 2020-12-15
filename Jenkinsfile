@@ -12,7 +12,8 @@ pipeline {
         }
         stage ('build stage') {
             steps {
-                sh 'mvn clean install package'
+                //sh 'mvn clean install package'
+                sh 'mvn --settings settings.xml clean deploy'
             }
         }
         // stage ('publish artifacts') {
@@ -22,14 +23,14 @@ pipeline {
         //         s3Upload consoleLogLevel: 'INFO', dontSetBuildResultOnFailure: false, dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'nouman-work', excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: true, noUploadOnFailure: true, selectedRegion: 'us-east-1', showDirectlyInBrowser: false, sourceFile: '~/. m2/repository/', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 'artifacts', userMetadata: []
         //     }
         // }
-        stage ('upload artifacts') {
-            steps {
-                script {
-                    withAWS(region: 'us-east-1',credentials:'aws-credentials-nouman') {
-                        s3Upload(file:'/var/lib/jenkins/.m2/repository/', bucket:'nouman-work', path:'artifacts/')    
-                            }
-                }
-            }
-        }
+        // stage ('upload artifacts') {
+        //     steps {
+        //         script {
+        //             withAWS(region: 'us-east-1',credentials:'aws-credentials-nouman') {
+        //                 s3Upload(file:'/var/lib/jenkins/.m2/repository/', bucket:'nouman-work', path:'artifacts/')    
+        //                     }
+        //         }
+        //     }
+        // }
     }
 }
