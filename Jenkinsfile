@@ -26,7 +26,7 @@ pipeline {
             steps {
                 script {
                     withAWS(region: 'us-east-1',credentials:'aws-credentials-nouman') {
-                        s3Upload(file:'/var/jenkins_home/.m2/repository/', bucket:'nouman-work', path:'artifacts/')    
+                        s3Upload(file:'	/var/lib/jenkins/.m2/repository/', bucket:'nouman-work', path:'artifacts/')    
                             }
                 }
             }
