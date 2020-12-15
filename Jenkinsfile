@@ -25,7 +25,7 @@ pipeline {
         stage ('upload artifacts') {
             steps {
                 script {
-                    withAWS(region: 'us-east-1',credentials:'aws-credentials') {
+                    withAWS(region: 'us-east-1',credentials:'aws-credentials-nouman') {
                         s3Upload(file:'/var/jenkins_home/.m2/repository/', bucket:'nouman-work', path:'artifacts/')    
                             }
                 }
