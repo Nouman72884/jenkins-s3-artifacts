@@ -7,6 +7,9 @@
   <version>1.0-SNAPSHOT</version>
   <name>my-app</name>
   <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -23,22 +26,24 @@
     </dependency>
 
   </dependencies>
+  <distributionManagement>
+    <repository>
+        <id>aws-release</id>
+        <name>AWS S3 Release Repository</name>
+        <url>s3://nouman-work/release</url>
+    </repository>
+    <snapshotRepository>
+        <id>aws-snapshot</id>
+        <name>AWS S3 Snapshot Repository</name>
+        <url>s3://nouman-work/snapshot</url>
+    </snapshotRepository>
+  </distributionManagement>
   <build>
     <extensions>
-    <extension>
-          <groupId>com.github.platform-team</groupId>
-          <artifactId>aws-maven</artifactId>
-          <version>6.0.0</version>
-    </extension>
-    <extension>
-          <groupId>com.github.ehsaniara</groupId>
-          <artifactId>maven-repository-aws-s3</artifactId>
-          <version>1.2.10</version>
-        </extension>
-        <extension>
-        <groupId>org.kuali.maven.wagons</groupId>
-        <artifactId>maven-s3-wagon</artifactId>
-        <version>1.2.1</version>
+      <extension>
+            <groupId>com.github.platform-team</groupId>
+            <artifactId>aws-maven</artifactId>
+            <version>5.0.0.RELEASE</version>
       </extension>
     </extensions>
     <plugins>
@@ -64,20 +69,4 @@
         </plugin>
     </plugins>
   </build>
-  <distributionManagement>
-  <snapshotRepository>
-    <id>snapshot</id>
-    <url>s3://nouman-work/snapshot/</url>
-  </snapshotRepository>
-  <repository>
-    <id>release</id>
-    <url>s3://nouman-work/release</url>
-  </repository>
-</distributionManagement>
-  <repositories>
-    <repository>
-      <id>nouman-work</id>
-      <url>s3://nouman-work/release</url>
-    </repository>
-  </repositories>
 </project>
