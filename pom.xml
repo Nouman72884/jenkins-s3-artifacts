@@ -35,6 +35,11 @@
           <artifactId>maven-repository-aws-s3</artifactId>
           <version>1.2.10</version>
         </extension>
+        <extension>
+        <groupId>org.kuali.maven.wagons</groupId>
+        <artifactId>maven-s3-wagon</artifactId>
+        <version>1.2.1</version>
+      </extension>
     </extensions>
     <plugins>
       <plugin>
@@ -60,7 +65,6 @@
     </plugins>
   </build>
   <distributionManagement>
-  <repositories>
   <snapshotRepository>
     <id>snapshot</id>
     <url>s3://nouman-work/snapshot/</url>
@@ -69,6 +73,11 @@
     <id>release</id>
     <url>s3://nouman-work/release</url>
   </repository>
-  </repositories>
 </distributionManagement>
+  <repositories>
+    <repository>
+      <id>nouman-work</id>
+      <url>s3://nouman-work/release</url>
+    </repository>
+  </repositories>
 </project>
