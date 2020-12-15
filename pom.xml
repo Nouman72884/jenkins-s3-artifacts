@@ -26,10 +26,15 @@
   <build>
     <extensions>
     <extension>
-      <groupId>com.github.platform-team</groupId>
-      <artifactId>aws-maven</artifactId>
-      <version>6.0.0</version>
+          <groupId>com.github.platform-team</groupId>
+          <artifactId>aws-maven</artifactId>
+          <version>6.0.0</version>
     </extension>
+    <extension>
+          <groupId>com.github.ehsaniara</groupId>
+          <artifactId>maven-repository-aws-s3</artifactId>
+          <version>1.2.10</version>
+        </extension>
     </extensions>
     <plugins>
       <plugin>
@@ -57,20 +62,13 @@
   <distributionManagement>
   <repositories>
   <snapshotRepository>
-    <id>nouman-work</id>
+    <id>snapshot</id>
     <url>s3://nouman-work/snapshot/</url>
   </snapshotRepository>
   <repository>
-    <id>nouman</id>
+    <id>release</id>
     <url>s3://nouman-work/release</url>
   </repository>
-  <repository>
-      <uniqueVersion>false</uniqueVersion>
-      <id>corp1</id>
-      <name>Corporate Repository</name>
-      <url>scp://repo/maven2</url>
-      <layout>default</layout>
-    </repository>
   </repositories>
 </distributionManagement>
 </project>
